@@ -1,1 +1,2 @@
 # CSE564
+This repository will help us collaborate on our programming assignments. Each assignment has its own directory in this repository labeled A1, A2... . These are the root directories for each assignment.
