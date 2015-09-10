@@ -1,1 +1,29 @@
-/* add all CSS rules to this file */
+#first
+{
+	height: 50%;
+	width:100%;
+
+}
+
+#second
+{
+	height: 50%;
+	width:100%;
+	
+}
+
+#figure
+{
+	height:100%;
+	width:75%;
+	float: left;
+	
+}
+
+#results
+{
+	height:100%;
+	width:25%;
+	float:right;
+	
+}
