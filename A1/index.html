@@ -1,12 +1,104 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="UTF-8">
-  <title>title</title>
-  <link rel="stylesheet" href="css/style.css" type="text/css">
-  <script src="js/functions.js"></script>
- </head>
- <body>
-  
- </body>
+<head>
+	<title>Software Design</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<h1> <center>CUBE MEASUREMENT SYSTEM</center></h1>
+	<style type="text/css">
+	#first
+	{
+		height: 50%;
+		width:100%;
+
+	}
+
+	#second
+	{
+		height: 50%;
+		width:100%;
+		
+	}
+
+	#figure
+	{
+		height:100%;
+		width:75%;
+		float: left;
+		
+	}
+	#results
+	{
+		height:100%;
+		width:25%;
+		float:right;
+		
+	}
+	
+	</style>
+</head>
+<body>
+<div class="container">
+	<div id="first">
+	<br><br><br>
+		<center><textarea rows="2" cols="75" id="search" placeholder="Enter the value here"></textarea></center>
+	
+		<center>
+			<select id="selection"> 
+				<option value="">Options</option>
+				<option value="american">American</option>
+				<option value="metric">Metric</option>
+			</select>
+			<div hidden id="am"> 
+			
+			<input  type="radio" name="unit" value="inch"  > Inch 
+			<input  type="radio" name="unit" value="yards" > Yards 
+			</div>
+			<div hidden id="met">
+			<input type="radio" name="unit" value="cm" > Cm 
+			<input  type="radio" name="unit" value="meter" > Meter 
+			</div>
+			<br><br><input type="button" value="Generate">	
+				
+		</center>
+
+	</div>
+	<hr>
+	<div id="second">
+		<div id="figure"> Here goes the figure </div>
+		
+		<div id="results"> Results: </div>
+	</div>	
+</div>
+
+	<script type="text/javascript">
+	
+	
+	$('#selection').click(function(){
+
+		
+		if($('#selection').val()=='american')
+		{
+			
+			$('#met').hide();
+			$('#am').show();
+		}
+
+		if($('#selection').val()=='metric')
+		{
+			
+			$('#met').show();
+			$('#am').hide();
+		}
+
+	});
+		
+	
+
+	$('#search').focus(function(){
+
+		$(this).removeAttr('placeholder');
+	});
+	</script>
+
+</body>
 </html>
