@@ -6,12 +6,12 @@ function drawCube(sideLength, maxSideLength){
 	// if the side length is greater than the max side length, 
 	// use the max side length instead...
 	if (sideLength > maxSideLength) 
-		sideLength = maxSideLength
+		sideLength = maxSideLength;
 
 	var c2 = document.getElementById('c').getContext('2d');
 
 	// convert the side length to a scaler between 0 and 100.
-	var pixelScaler = sideLength/maxSideLength*100
+	var pixelScaler = sideLength/maxSideLength*100;
 
 	// Clear contents of canvas before drawing
 	c2.clearRect(0, 0, 400, 400);
