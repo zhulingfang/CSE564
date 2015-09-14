@@ -11,7 +11,7 @@ function drawCube(sideLength, maxSideLength){
 	var c2 = document.getElementById('c').getContext('2d');
 
 	// convert the side length to a scaler between 0 and 100.
-	var pixelScaler = sideLength/maxSideLength*100;
+	var pixelScaler = sideLength/maxSideLength*95 + 5;
 
 	// Clear contents of canvas before drawing
 	c2.clearRect(0, 0, 400, 400);
@@ -50,10 +50,71 @@ function drawCube(sideLength, maxSideLength){
 	c2.fill();
 }
 
-function validateInput() {
-    		var x = document.getElementById("search").value;      
-    		if (isNaN(x)) 
-			alert("Input must be a number");
-    		else if (x<=0 || x==null) 
-			alert("Input must be greater than zero or not null");
+function convertToMeters(val, currentUnit) {
+	if (currentUnit == 'cm')
+		return val*0.01;
+	if (currentUnit == 'meter')
+		return val;
+	if (currentUnit == 'inch')
+		return val*0.0254;
+	if (currentUnit == 'yards')
+		return val*0.9144
+}
+
+function validateInput(maxInput) {
+	var x = $('#search').val();   
+	if (isNaN(x) || x==null || x.length==0) {
+		alert("Input must be a number");
+		return false;
 	}
+	if ($("input[type=radio]:checked").length == 0) {
+		alert("Please select a unit of measurement");
+		return false;
+	}
+	var unit = $("input[type='radio'][name='unit']:checked").val();
+	if (x<=0 || convertToMeters(x, unit) > maxInput) {
+		alert("Input must be between 0 and " + maxInput + " meters (" + maxInput*1.09361 + " yards)");
+		return false;
+	}
+	return true
+}
+
+
+// we will convert all units to meters in the background so that we have a
+// consistent unit to work with. The program will still display in whatever
+// units the user requests.
+function calculate() {
+	var maxInput = 10; // meters
+	var maxSideLength = maxInput/12; 
+	if (!validateInput(maxInput))
+		return false;
+
+	var unit = $("input[type='radio'][name='unit']:checked").val();
+	var input = convertToMeters($('#search').val(), unit);
+	var sideLength = input/12;
+	var volume = sideLength*sideLength*sideLength;
+
+	drawCube(sideLength, maxSideLength);
+	$('#results').empty();
+	$('#results').append('<p>Side length = ' + sideLength + '</p>');
+	$('#results').append('<p>Max volume = ' + volume + '</p>');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
