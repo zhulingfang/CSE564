@@ -64,6 +64,13 @@
 			$('#am').hide();
 		}
 	});
+
+
+	$('input[type=radio]').change(function(){
+		if ( $('#results').children().length > 0 ) 
+			calculate();
+	})
+
 		
 	$('#search').focus(function(){
 		$(this).removeAttr('placeholder');
