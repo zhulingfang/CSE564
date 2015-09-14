@@ -80,9 +80,6 @@ function validateInput(maxInput) {
 }
 
 
-// we will convert all units to meters in the background so that we have a
-// consistent unit to work with. The program will still display in whatever
-// units the user requests.
 function calculate() {
 	var maxInput = 10; // meters
 	var maxSideLength = maxInput/12; 
@@ -90,11 +87,12 @@ function calculate() {
 		return false;
 
 	var unit = $("input[type='radio'][name='unit']:checked").val();
-	var input = convertToMeters($('#search').val(), unit);
+	var input = $('#search').val();
+	
 	var sideLength = input/12;
 	var volume = sideLength*sideLength*sideLength;
 
-	drawCube(sideLength, maxSideLength);
+	drawCube(convertToMeters(sideLength, unit), maxSideLength);
 	$('#results').empty();
 	$('#results').append('<p>Side length = ' + sideLength + '</p>');
 	$('#results').append('<p>Max volume = ' + volume + '</p>');
