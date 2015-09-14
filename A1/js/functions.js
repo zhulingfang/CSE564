@@ -81,7 +81,7 @@ function validateInput(maxInput) {
 
 
 function calculate() {
-	var maxInput = 10; // meters
+	var maxInput = 100; // meters
 	var maxSideLength = maxInput/12; 
 	if (!validateInput(maxInput))
 		return false;
